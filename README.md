@@ -1,4 +1,4 @@
-# transpose-dsv (in Python)
+# transpose-dsv (in Python) ![](icon/design/16.png)
 CLI-based transposing of delimiter-separated values (including .csv/comma-separated values).  Written in Python using Python X.Y.X and VS Code
 
 ## Background
@@ -26,6 +26,9 @@ A delimited text file is a text file used to store data, in which each line repr
 CSV, a specific subset of DSV, is more widely adpoted and used the comma character as a seperator. Each line of the file is a data record. Each record consists of one or more fields, separated by commas. The use of the comma as a field separator is the source of the name for this file format. A CSV file typically stores tabular data (numbers and text) in plain text, in which case each line will have the same number of fields.
 
 The CSV file format is not fully standardized. The basic idea of separating fields with a comma is clear, but that idea gets complicated when the field data may also contain commas or even embedded line breaks. CSV implementations may not handle such field data, or they may use quotation marks to surround the field. Quotation does not solve everything: some fields may need embedded quotation marks, so a CSV implementation may include escape characters or escape sequences.
+
+## Icon
+![](icon/design/256.png)
 
 ## Prerequisites
 * Python 3
