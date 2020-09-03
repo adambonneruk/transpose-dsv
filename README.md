@@ -1,4 +1,4 @@
-# transpose-dsv (in Python)
+# transpose-dsv (in Python) ![](icon/design/16.png)
 CLI-based transposing of delimiter-separated values (including .csv/comma-separated values).  Written in Python using Python X.Y.X and VS Code
 
 ## Background
@@ -27,6 +27,9 @@ CSV, a specific subset of DSV, is more widely adpoted and used the comma charact
 
 The CSV file format is not fully standardized. The basic idea of separating fields with a comma is clear, but that idea gets complicated when the field data may also contain commas or even embedded line breaks. CSV implementations may not handle such field data, or they may use quotation marks to surround the field. Quotation does not solve everything: some fields may need embedded quotation marks, so a CSV implementation may include escape characters or escape sequences.
 
+## Icon
+![](icon/design/256.png)
+
 ## Prerequisites
 * Python 3
   * itertools
@@ -34,6 +37,13 @@ The CSV file format is not fully standardized. The basic idea of separating fiel
   * os
 * PyInstaller
 * Notepad++
+
+### Install Guide
+```powershell
+choco install python
+# restart commandline for system path edits
+pip install pyinstaller
+```
 
 ## Usage
 ```powershell
