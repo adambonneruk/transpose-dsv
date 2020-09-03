@@ -1,5 +1,5 @@
 # transpose-dsv (in Python) ![](icon/design/16.png)
-CLI-based transposing of delimiter-separated values (including .csv/comma-separated values).  Written in Python using Python X.Y.X and VS Code
+CLI-based transposing of delimiter-separated values (including .csv/comma-separated values).  Written in Python using Python 3.8.5 and VS Code
 
 ## Background
 In May 2016, I was working with some rather large extract files that typically had many columns (more than 10k) but only a few rows (typicially less than 5000). Opening these files in Excel was impossible as it hit the column limit (~16,384). Therefore I developed this script to "Transpose" the columns and rows in the following manner:
