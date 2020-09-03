@@ -1,5 +1,5 @@
 # transpose-dsv (in Python) ![](icon/design/16.png)
-CLI-based transposing of delimiter-separated values (including .csv/comma-separated values).  Written in Python using Python 3.8.5 and VS Code
+CLI-based transposing of delimiter-separated values (including .csv/comma-separated values).  Written in Python using Python 3.8.5 and pyinstaller 4.0
 
 ## Background
 In May 2016, I was working with some rather large extract files that typically had many columns (more than 10k) but only a few rows (typicially less than 5000). Opening these files in Excel was impossible as it hit the column limit (~16,384). Therefore I developed this script to "Transpose" the columns and rows in the following manner:
@@ -31,12 +31,10 @@ The CSV file format is not fully standardized. The basic idea of separating fiel
 ![](icon/design/256.png)
 
 ## Prerequisites
-* Python 3
-  * itertools
+* Python 3 (3.8.5+)
   * sys
   * os
-* PyInstaller
-* Notepad++
+* PyInstaller (4.0+)
 
 ### Install Guide
 ```powershell
@@ -47,21 +45,33 @@ pip install pyinstaller
 
 ## Usage
 ```powershell
-CSV Transpose Tool
-	
-	used as: TransposeCSV[.py|.exe] inputfile.ext sep
-	
-	tested separators:
-		| (escape using ^|)
-		,
-		#
+Usage: transpose.(py|exe) FILE DELIMITER_FLAG [CUSTOM_DELIMITER]
+
+Transpose a given .csv/.dsv file's X and Y axis
+
+Supported Switches/Arguments.
+  -c, --comma    comma delimiter ","
+  -p, --pipe     pipe delimiter "|"
+  -t, --tab      tab delimiter "        "
+  -h, --hash     comma delimiter "#"
+  -r, --caret    caret (hat) delimiter "^"
+  -x, --custom   custom delimiter, follow with [CUSTOM_DELIMITER]
+      --help     display this help message
+
+Usage Examples:
+  comma seperated file called example.csv:
+        transpose example.csv -c
+
+  hash seperated file called hashes.hsv:
+        transpose hashes.hsv -h
+
+  custom hat-and-pipe seperated extract.mi:
+        transpose extract.mi -x ^|
 ```
 
 ## Note / Limitations
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+* currently the source is hardcoded to utf-8
 
 ## Future Ideas (braindump)
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-## VS Shortcuts
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+* refactor code, move help to a seperate function that can be invoked in a number of scenarios
+* better parsing of commandline arguments (e.g. any order will still work)
