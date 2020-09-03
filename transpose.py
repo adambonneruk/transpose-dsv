@@ -36,24 +36,37 @@ if sys.argv[1] == '--help': #activiate help mode
 	print("")
 else:
 	print("-----Transpose Mode-----\n")
-	infile = sys.argv[1]
-	outfile = "transposed_"+infile
+	inputFile = sys.argv[1]
+	outputFile = inputFile+"_transposed"
+	
+	
+	
+	###################################################################
 	csvdelim = sys.argv[2]
-	print('Input File: "' + str(infile) + '"')
-	print('Output File: "' + str(outfile) + '"')
-	print('Delimeter: "' + str(csvdelim) + '"')
+	
 	###################################################################
 	if re.search("^(-x|--custom$)", sys.argv[2]):
 		print("-----Custom Delim Mode-----\n")
 	elif re.search("^(-[cpthr]|--(comma|pipe|tab|hash|caret))$", sys.argv[2]):
 		print("-----Normal Delim Mode-----\n")
+		if re.search("^(-c|--comma)$", sys.argv[2]):
+			print("-----Comma Mode-----\n")
+		elif re.search("^(-p|--pipe)$", sys.argv[2]):
+			print("-----Pipe Mode-----\n")
+		elif re.search("^(-t|--tab)$", sys.argv[2]):
+			print("-----Tab Mode-----\n")
+		elif re.search("^(-h|--hash)$", sys.argv[2]):
+			print("-----Hash Mode-----\n")
+		elif re.search("^(-r|--caret)$", sys.argv[2]):
+			print("-----Caret Mode-----\n")
 	else:
 		print("-----Delim Error-----\n")
 
-#os.system("cls")
-#os.system("echo CSV Transpose Tool - Adam Bonner - 2016-05-23 - Ver 1.00 - www.adambonner.co.uk")
-#os.system("echo --------------------------------------------------------------------------------")
-#
+	####################################################################
+	print('Input File: "' + str(inputFile) + '"')
+	print('Output File: "' + str(outputFile) + '"')
+	print('Delimeter: "' + str(csvdelim) + '"')
+
 #print('Input File: "' + str(infile) + '"')
 #print('Output File: "' + str(outfile) + '"')
 #print('Delimeter: "' + str(csvdelim) + '"')
