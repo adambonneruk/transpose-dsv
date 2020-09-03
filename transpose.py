@@ -1,14 +1,11 @@
 import itertools
 import sys
 import os
-
+import re
 from csv import reader, writer
 
-infile = sys.argv[1]
-outfile = "transposed_"+infile
-#csvdelim = sys.argv[2]
-
-if sys.argv[1] == '--help':
+if sys.argv[1] == '--help': #activiate help mode
+	print ("-----Help Mode-----\n")
 	print("Usage: transpose.(py|exe) FILE DELIMITER_FLAG [CUSTOM_DELIMITER]")
 	# standard argument <required argument> [optional option]	curly braces {default values} parenthesis (miscellaneous info)
 	# syntax taken from: https://stackoverflow.com/questions/21503865/how-to-denote-that-a-command-line-argument-is-optional-when-printing-usage
@@ -37,14 +34,15 @@ if sys.argv[1] == '--help':
 	print("")
 	print("Adam Bonner, 2020, https://github.com/adambonneruk/transpose-dsv")
 	print("")
-
-
-elif sys.argv[1] == 'yo':
-	print ("3 - Got a true expression value")
-	#print sys.argv[1]
 else:
-	print ("nothing param")
-	#print sys.argv[1]
+	print("-----Transpose Mode-----\n")
+	#if sys.argv[2] == '-x' or sys.argv[2] == '--custom':
+	if re.search("^(-x|--custom$)", sys.argv[2]):
+		print("-----Custom Delim Mode-----\n")
+	elif re.search("^(-[cpthr]|--(comma|pipe|tab|hash|caret))$", sys.argv[2]):
+		print("-----Normal Delim Mode-----\n")
+	else:
+		print("-----Delim Error-----\n")
 
 #os.system("cls")
 #os.system("echo CSV Transpose Tool - Adam Bonner - 2016-05-23 - Ver 1.00 - www.adambonner.co.uk")
