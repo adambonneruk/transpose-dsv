@@ -1,16 +1,3 @@
-'''
-
-	CSV Transpose Tool
-	
-	used as: TransposeCSV[.py|.exe] inputfile.ext sep
-	
-	tested separators:
-		| (escape using ^|)
-		,
-		#
-	wrote for BIAB Ph2 2016-05-23
-
-'''
 import itertools
 import sys
 import os
@@ -34,5 +21,5 @@ print('\nWorking...')
 with open(infile) as f:
 	with open(outfile, 'w', newline="\n", encoding="utf-8") as fw:
 		writer(fw, delimiter=csvdelim).writerows(zip(*reader(f, delimiter=csvdelim)))
-		
+
 print('...Done!')
