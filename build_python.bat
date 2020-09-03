@@ -9,11 +9,10 @@ REM Fix Launch as Admin Directory Problem
 
 pyinstaller.exe --onefile --icon=./icon/icon.ico TransposeCSV.py
 
-MOVE "dist\%PythonScript%.exe" "..\" >nul
+MOVE "dist\TransposeCSV.exe" "..\" >nul
 
-
-DEL %PythonScript%.spec >nul
-DEL %PythonScript%.py >nul
+DEL TransposeCSV.spec >nul
+DEL TransposeCSV.py >nul
 RMDIR __pycache__ /S /Q
 RMDIR build /S /Q
 RMDIR dist /S /Q
