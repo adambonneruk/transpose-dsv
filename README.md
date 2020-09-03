@@ -38,6 +38,13 @@ The CSV file format is not fully standardized. The basic idea of separating fiel
 * PyInstaller
 * Notepad++
 
+### Install Guide
+```powershell
+choco install python
+# restart commandline for system path edits
+pip install pyinstaller
+```
+
 ## Usage
 ```powershell
 CSV Transpose Tool
