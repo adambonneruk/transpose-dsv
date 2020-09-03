@@ -38,43 +38,40 @@ else:
 	print("-----Transpose Mode-----\n")
 	inputFile = sys.argv[1]
 	outputFile = inputFile+"_transposed"
-	
-	
-	
-	###################################################################
-	csvdelim = sys.argv[2]
-	
-	###################################################################
-	if re.search("^(-x|--custom$)", sys.argv[2]):
-		print("-----Custom Delim Mode-----\n")
-	elif re.search("^(-[cpthr]|--(comma|pipe|tab|hash|caret))$", sys.argv[2]):
-		print("-----Normal Delim Mode-----\n")
-		if re.search("^(-c|--comma)$", sys.argv[2]):
-			print("-----Comma Mode-----\n")
-		elif re.search("^(-p|--pipe)$", sys.argv[2]):
-			print("-----Pipe Mode-----\n")
-		elif re.search("^(-t|--tab)$", sys.argv[2]):
-			print("-----Tab Mode-----\n")
-		elif re.search("^(-h|--hash)$", sys.argv[2]):
-			print("-----Hash Mode-----\n")
-		elif re.search("^(-r|--caret)$", sys.argv[2]):
-			print("-----Caret Mode-----\n")
+	if re.search("^(-x|--custom)$", sys.argv[2]):
+		print("-----Custom Mode-----\n")
+		delimiter = sys.argv[3]
+	elif re.search("^(-c|--comma)$", sys.argv[2]):
+		print("-----Comma Mode-----\n")
+		delimiter = ","
+	elif re.search("^(-p|--pipe)$", sys.argv[2]):
+		print("-----Pipe Mode-----\n")
+		delimiter = "|"
+	elif re.search("^(-t|--tab)$", sys.argv[2]):
+		print("-----Tab Mode-----\n")
+		delimiter = "\t"
+	elif re.search("^(-h|--hash)$", sys.argv[2]):
+		print("-----Hash Mode-----\n")
+		delimiter = "#"
+	elif re.search("^(-r|--caret)$", sys.argv[2]):
+		print("-----Caret Mode-----\n")
+		delimiter = "^"
 	else:
 		print("-----Delim Error-----\n")
+		delimiter = "ERROR"
 
-	####################################################################
 	print('Input File: "' + str(inputFile) + '"')
 	print('Output File: "' + str(outputFile) + '"')
-	print('Delimeter: "' + str(csvdelim) + '"')
+	print('Delimeter: "' + str(delimiter) + '"')
 
-#print('Input File: "' + str(infile) + '"')
-#print('Output File: "' + str(outfile) + '"')
-#print('Delimeter: "' + str(csvdelim) + '"')
-#
-#print('\nWorking...')
+	if delimiter != "" and delimiter != "ERROR":
+		with open(inputFile) as f:
+			with open(outputFile, 'w', newline="\n", encoding="utf-8") as fw:
+				writer(fw, delimiter=delimiter).writerows(zip(*reader(f, delimiter=delimiter)))
 
-#with open(infile) as f:
-#	with open(outfile, 'w', newline="\n", encoding="utf-8") as fw:
-#		writer(fw, delimiter=csvdelim).writerows(zip(*reader(f, delimiter=csvdelim)))
-#
-#print('...Done!')
+	else:
+		print("error")
+
+
+	####################################################################
+
