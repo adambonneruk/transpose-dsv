@@ -38,7 +38,8 @@ else:
 	print("-----Transpose Mode-----\n")
 	if len(sys.argv) > 2: #3rd+ argument present
 		inputFile = sys.argv[1]
-		outputFile = inputFile+"_transposed"
+		outputFile, outputFileExtension = os.path.splitext(inputFile)
+		outputFile = outputFile+"_transposed"+outputFileExtension
 		if re.search("^(-x|--custom)$", sys.argv[2]):
 			print("-----Custom Mode-----\n")
 			delimiter = sys.argv[3]
