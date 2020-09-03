@@ -5,7 +5,7 @@ import re
 from csv import reader, writer
 
 if sys.argv[1] == '--help': #activiate help mode
-	print ("-----Help Mode-----\n")
+	#print ("-----Help Mode-----\n")
 	print("Usage: transpose.(py|exe) FILE DELIMITER_FLAG [CUSTOM_DELIMITER]")
 	# standard argument <required argument> [optional option]	curly braces {default values} parenthesis (miscellaneous info)
 	# syntax taken from: https://stackoverflow.com/questions/21503865/how-to-denote-that-a-command-line-argument-is-optional-when-printing-usage
@@ -35,35 +35,35 @@ if sys.argv[1] == '--help': #activiate help mode
 	print("Adam Bonner, 2020, https://github.com/adambonneruk/transpose-dsv")
 	print("")
 else:
-	print("-----Transpose Mode-----\n")
+	#print("-----Transpose Mode-----\n")
 	if len(sys.argv) > 2: #3rd+ argument present
 		inputFile = sys.argv[1]
 		outputFile, outputFileExtension = os.path.splitext(inputFile)
 		outputFile = outputFile+"_transposed"+outputFileExtension
 		if re.search("^(-x|--custom)$", sys.argv[2]):
-			print("-----Custom Mode-----\n")
+			#print("-----Custom Mode-----\n")
 			delimiter = sys.argv[3]
 		elif re.search("^(-c|--comma)$", sys.argv[2]):
-			print("-----Comma Mode-----\n")
+			#print("-----Comma Mode-----\n")
 			delimiter = ","
 		elif re.search("^(-p|--pipe)$", sys.argv[2]):
-			print("-----Pipe Mode-----\n")
+			#print("-----Pipe Mode-----\n")
 			delimiter = "|"
 		elif re.search("^(-t|--tab)$", sys.argv[2]):
-			print("-----Tab Mode-----\n")
+			#print("-----Tab Mode-----\n")
 			delimiter = "\t"
 		elif re.search("^(-h|--hash)$", sys.argv[2]):
-			print("-----Hash Mode-----\n")
+			#print("-----Hash Mode-----\n")
 			delimiter = "#"
 		elif re.search("^(-r|--caret)$", sys.argv[2]):
-			print("-----Caret Mode-----\n")
+			#print("-----Caret Mode-----\n")
 			delimiter = "^"
 		else:
 			print("-----Delim Error-----\n")
 			delimiter = "ERROR"
-		print('Input File: "' + str(inputFile) + '"')
-		print('Output File: "' + str(outputFile) + '"')
-		print('Delimeter: "' + str(delimiter) + '"')
+		#print('Input File: "' + str(inputFile) + '"')
+		#print('Output File: "' + str(outputFile) + '"')
+		#print('Delimeter: "' + str(delimiter) + '"')
 		if delimiter != "" and delimiter != "ERROR":
 			with open(inputFile) as f:
 				with open(outputFile, 'w', newline="\n", encoding="utf-8") as fw:
