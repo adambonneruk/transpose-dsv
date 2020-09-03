@@ -36,7 +36,13 @@ if sys.argv[1] == '--help': #activiate help mode
 	print("")
 else:
 	print("-----Transpose Mode-----\n")
-	#if sys.argv[2] == '-x' or sys.argv[2] == '--custom':
+	infile = sys.argv[1]
+	outfile = "transposed_"+infile
+	csvdelim = sys.argv[2]
+	print('Input File: "' + str(infile) + '"')
+	print('Output File: "' + str(outfile) + '"')
+	print('Delimeter: "' + str(csvdelim) + '"')
+	###################################################################
 	if re.search("^(-x|--custom$)", sys.argv[2]):
 		print("-----Custom Delim Mode-----\n")
 	elif re.search("^(-[cpthr]|--(comma|pipe|tab|hash|caret))$", sys.argv[2]):
